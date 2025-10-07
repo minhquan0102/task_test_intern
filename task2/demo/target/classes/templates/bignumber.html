@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="vi" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Cộng hai số lớn</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 50px;
+            background: #f3f4f6;
+        }
+        .container {
+            background: white;
+            padding: 25px 30px;
+            border-radius: 10px;
+            width: 500px;
+            margin: 0 auto;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+        h2 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 20px;
+        }
+        label {
+            font-weight: bold;
+        }
+        input {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 15px;
+        }
+        button {
+            background: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            width: 100%;
+            font-size: 16px;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        button:hover {
+            background: #0056b3;
+        }
+        .result {
+            margin-top: 15px;
+            padding: 12px;
+            background: #e9f7ef;
+            color: #155724;
+            border-radius: 5px;
+            text-align: center;
+            font-weight: bold;
+        }
+        .log {
+            margin-top: 20px;
+            background: #f8f9fa;
+            border: 1px solid #ddd;
+            padding: 10px 15px;
+            border-radius: 5px;
+            font-size: 14px;
+            color: #333;
+            max-height: 250px;
+            overflow-y: auto;
+        }
+        .log h4 {
+            color: #007bff;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h2>Cộng hai số lớn</h2>
+    <form th:action="@{/bignumber/sum}" method="post">
+        <label for="num1">Số thứ nhất:</label>
+        <input type="text" id="num1" name="num1" th:value="${num1}" placeholder="Nhập số thứ nhất...">
+
+        <label for="num2">Số thứ hai:</label>
+        <input type="text" id="num2" name="num2" th:value="${num2}" placeholder="Nhập số thứ hai...">
+
+        <button type="submit">Tính tổng</button>
+    </form>
+
+    <div th:if="${result}" class="result">
+        <p>Kết quả: <span th:text="${result}"></span></p>
+    </div>
+
+    <div th:if="${log}" class="log">
+        <h4>Chi tiết từng bước tính</h4>
+        <p th:utext="${log}"></p>
+    </div>
+</div>
+</body>
+</html>
